@@ -64,6 +64,14 @@ module BestInPlace
           out << %( data-#{k.to_s.dasherize}="#{v}")
         end
       end
+      if opts[:params] && opts[:params].is_a?(Hash)
+        opts[:params].each do |k, v|
+          if !v.is_a?(String) && !v.is_a?(Symbol)
+            v = v.to_json
+          end
+          out << %( data-params-#{k.to_s.dasherize}="#{v}")
+        end
+      end
       if !opts[:sanitize].nil? && !opts[:sanitize]
         out << " data-sanitize='false'>"
         out << display_value.to_s
