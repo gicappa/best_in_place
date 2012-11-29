@@ -69,7 +69,7 @@ module BestInPlace
           if !v.is_a?(String) && !v.is_a?(Symbol)
             v = v.to_json
           end
-          out << %( data-params-#{k.to_s.dasherize}="#{v}")
+          out << %( data-params-#{k.to_s.dasherize}='#{v}')
         end
       end
       if !opts[:sanitize].nil? && !opts[:sanitize]

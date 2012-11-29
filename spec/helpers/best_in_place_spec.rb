@@ -197,6 +197,13 @@ describe BestInPlace::BestInPlaceHelpers do
         span.attribute("data-params-bar").value.should == "nasty"
       end
 
+      it "should have html5 data attributes for nested params too" do
+        out = helper.best_in_place @user, :name, :params => { :foo => { :bar => "nasty" }}
+        nk = Nokogiri::HTML.parse(out)
+        span = nk.css("span")
+        span.attribute("data-params-foo").value.should == "{\"bar\":\"nasty\"}"
+      end
+
       describe "display_as" do
         it "should render the address with a custom renderer" do
           @user.should_receive(:address_format).and_return("the result")
