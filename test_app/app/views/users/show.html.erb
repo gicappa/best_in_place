@@ -43,7 +43,7 @@
     <tr>
       <td>ZIP</td>
       <td id="zip">
-        <%= best_in_place @user, :zip %>
+        <%= best_in_place @user, :zip, params: {foo: 'foo_value', bar: 'bar_value'} %>
       </td>
     </tr>
     <tr>
